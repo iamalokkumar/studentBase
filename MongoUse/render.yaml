@@ -6,10 +6,11 @@ services:
     startCommand: "cd MongoUse && npm start"
     branch: master
     autoDeploy: true
-    # Specify the port Render should bind to (for Node.js apps, it is usually 8080)
-    port: 8080
+    envVars:
+      - key: PORT
+        value: "8080"
 
-  # PR Previews
+  # PR Previews (automatically handled by Render)
   - type: web
     name: mongoUse-pr-preview
     env: node
@@ -17,5 +18,7 @@ services:
     startCommand: "cd MongoUse && npm start"
     branch: pr
     autoDeploy: true
-    port: 8080
-    pullRequestPreview: true
+    envVars:
+      - key: PORT
+        value: "8080"
+

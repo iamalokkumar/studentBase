@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: mongoUse
+    env: node
+    buildCommand: "cd MongoUse && npm install"
+    startCommand: "cd MongoUse && npm start"
+    branch: master
+    autoDeploy: true
+    # Specify the port Render should bind to (for Node.js apps, it is usually 8080)
+    port: 8080
+
+  # PR Previews
+  - type: web
+    name: mongoUse-pr-preview
+    env: node
+    buildCommand: "cd MongoUse && npm install"
+    startCommand: "cd MongoUse && npm start"
+    branch: pr
+    autoDeploy: true
+    port: 8080
+    pullRequestPreview: true
